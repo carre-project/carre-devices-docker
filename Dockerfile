@@ -31,18 +31,22 @@ ENV PATH /usr/local/virtuoso-opensource/bin/:$PATH
 
 
 # ======================== PYTHON INSTALLATION ================================#
-
-RUN apt-get update && apt-get install -y \
-    apache2
+# python and relevant tools
+RUN apt-get update && apt-get install -y \ 
+    build-essential \
+    apache2 \
     python \
     python-dev \
     libxml2-dev \
     libxslt-dev \
+    libssl-dev \
     zlib1g-dev \
     libyaml-dev \
     libffi-dev \
-    python-pip \
-    git && pip install --upgrade pip virtualenv requests
+    python-pip
+
+# General dev tools
+RUN apt-get install -y git && pip install --upgrade pip virtualenv requests
 
 
 
